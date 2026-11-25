@@ -36,18 +36,17 @@ COL_W = W // 3
 def _frame(left):
     img = Image.new("RGB", (W, H), RED)
     d = ImageDraw.Draw(img)
-    d.rectangle([0, H - 8, W, H], fill=MINT)
     if left <= 0:
-        d.text((W / 2, (H - 8) / 2), "THANK YOU!", font=DONE_FONT, fill=WHITE, anchor="mm")
+        d.text((W / 2, H / 2), "THANK YOU!", font=DONE_FONT, fill=WHITE, anchor="mm")
         return img
     hours, rem = divmod(left, 3600)
     mins, secs = divmod(rem, 60)
     for i, (v, label) in enumerate(zip([hours, mins, secs], LABELS)):
         cx = COL_W * i + COL_W / 2
-        d.text((cx, 70), f"{v:02d}", font=NUM_FONT, fill=WHITE, anchor="mm")
-        d.text((cx, 128), label, font=LABEL_FONT, fill=MINT, anchor="mm")
+        d.text((cx, 74), f"{v:02d}", font=NUM_FONT, fill=WHITE, anchor="mm")
+        d.text((cx, 132), label, font=LABEL_FONT, fill=MINT, anchor="mm")
         if i < 2:
-            d.text((COL_W * (i + 1), 64), ":", font=COLON_FONT, fill=MINT, anchor="mm")
+            d.text((COL_W * (i + 1), 68), ":", font=COLON_FONT, fill=MINT, anchor="mm")
     return img
 
 
